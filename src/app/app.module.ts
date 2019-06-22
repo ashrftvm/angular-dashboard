@@ -9,13 +9,17 @@ import { SidenavComponent } from './dashboard/sidenav/sidenav.component';
 import { MaterialModule } from './material-module';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SignUpComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,

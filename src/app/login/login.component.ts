@@ -1,5 +1,7 @@
-import { Component, OnInit, NgZone} from '@angular/core';
+import { Component, OnInit, NgZone, Input} from '@angular/core';
 import { Router } from '@angular/router';
+
+import { SignUpComponent } from '../sign-up/sign-up.component';
 declare var FB: any;
 
 
@@ -10,15 +12,18 @@ declare var FB: any;
 })
 export class LoginComponent implements OnInit {
 
+  @Input() signUpC : SignUpComponent;
+
   username: String;
   password: String;
   error: String;
+  signUpClicked: boolean = false;
 
   constructor(private ngZone: NgZone, private router : Router) { }
 
   ngOnInit() {
     (window as any).fbAsyncInit = () => {
-      FB.init({appId: '707254099705552',cookie: true, xfbml: true, version: 'v2.8'});
+      FB.init({appId: 'APPID',cookie: true, xfbml: true, version: 'v2.8'});
       FB.Event.subscribe('auth.authResponseChange', (response) => { 
         if (response.status === 'connected') { 
           this.statusChangeCallback(response)
@@ -77,12 +82,12 @@ export class LoginComponent implements OnInit {
   }
 
   signUp(){
-    alert("Yaay! You clicked on Sign Up.");
+    this.signUpClicked = true;
   }
 
-  fbLoggedIn(){
-    console.log("hI");
+  getNotification(value){
+    if(value === true)
+      this.signUpClicked = false
   }
-
 
 }
